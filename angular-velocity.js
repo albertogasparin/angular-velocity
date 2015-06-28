@@ -3,14 +3,9 @@
 
 	'use strict';
 
-	var CLASS_ANIM_ADD 	  = 0,
+	var CLASS_ANIM_ADD = 0,
 		CLASS_ANIM_REMOVE = 1,
-		Velocity = window.Velocity || (window.jQuery && jQuery.Velocity);
-
-	// Check we have velocity and the UI pack
-	if (!Velocity || !Velocity.RegisterEffect) {
-		throw "Velocity and Velocity UI Pack plugin required, please include the relevant JS files. Get Velocity with: bower install velocity";
-	}
+		Velocity = window.Velocity || (window.jQuery && window.jQuery.Velocity);
 
 	// Utility to normalize the UI pack transition name
 	function normalizeTransitionName(animation) {
@@ -19,27 +14,27 @@
 
 	// Utility to create class name for a sequence
 	function animationToClassName(animation) {
-		return 'velocity-' + normalizeTransitionName(animation);
+		return 'a-any-' + normalizeTransitionName(animation);
 	}
 
 	// Utility to create an opposites class name for a sequence
 	function animationToOppositesClassName(animation) {
-		return 'velocity-opposites-' + normalizeTransitionName(animation);
+		return 'a-' + normalizeTransitionName(animation);
 	}
 
 	// Utility to create an enter transition class name
 	function animationToEnterClassName(animation) {
-		return 'velocity-enter-' + normalizeTransitionName(animation);
+		return 'a-enter-' + normalizeTransitionName(animation);
 	}
 
 	// Utility to create a leave transition class name
 	function animationToLeaveClassName(animation) {
-		return 'velocity-leave-' + normalizeTransitionName(animation);
+		return 'a-leave-' + normalizeTransitionName(animation);
 	}
 
 	// Utility to parse out velocity options
 	function getVelocityOpts($parse, $el, done) {
-		var optsAttrVal = $el.attr('data-velocity-opts'),
+		var optsAttrVal = $el.attr('data-a-opts'),
 			scope = $el.scope(),
 			opts = {
 				complete: done
